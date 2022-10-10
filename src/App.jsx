@@ -7,12 +7,14 @@ import Statistic from './pages/statistics/Statistic'
 import Blog from './pages/blogs/Blog'
 import { topicLoader, topicQuesLoader } from './loaderMethods'
 import Question from './pages/questions/Question'
+import Error from './pages/error/Error'
 
 function App() {
   const router = createBrowserRouter([
     {
       path: '/',
       element: <Main />,
+      errorElement: <Error />,
       children: [
         {
           path: '/',
@@ -41,7 +43,8 @@ function App() {
           element: <Blog />
         },
       ]
-    }
+    },
+    // { path: '*', element: <Error /> }
   ])
 
   return (

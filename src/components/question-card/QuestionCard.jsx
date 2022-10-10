@@ -11,15 +11,14 @@ const QuestionCard = ({ ques }) => {
     }
     const showAnswer = () => {
         setShowAns(!showAns)
-        window.alert(`${correctAnswer}`)
     }
 
     return (
         <div >
             <div className='border-2 rounded-xl shadow-md p-4 lg:p-8 lg:w-1/2 mx-auto flex flex-col gap-8'>
-                <div className='flex justify-between'>
-                    <div className='text-xl font-semibold' dangerouslySetInnerHTML={createMarkup(question)}></div>
-                    <div className='text-2xl font-semibold text-red-400'>
+                <div className='flex justify-between items-center'>
+                    <div className='text-lg lg:text-xl font-semibold' dangerouslySetInnerHTML={createMarkup(question)}></div>
+                    <div className='text-lg lg:text-2xl font-semibold text-red-400'>
                         {
                             showAns ?
                             <AiFillEye onClick={() => setShowAns(!showAns)}/>
@@ -32,6 +31,9 @@ const QuestionCard = ({ ques }) => {
                     {
                         options.map(el => <OptionCard key={el} option={el} answer={correctAnswer} question={question} />)
                     }
+                </div>
+                <div className={showAns ? 'block bg-blue-400 p-2 rounded-sm' : 'hidden'}>
+                    <p className='text-lg font-bold text-white'>Correct Answer is: <span className='px-1 text-black'>{correctAnswer}</span></p>
                 </div>
             </div>
         </div>
