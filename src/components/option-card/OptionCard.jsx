@@ -1,11 +1,21 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { QuestionContext } from '../../pages/questions/Question'
 
 const OptionCard = ({ option, answer, question }) => {
-    const [markAns, setMarkAns] = useState()
+    const [markAns, setMarkAns] = useState(false)
+    const [rightAns, setRightAns] = useContext(QuestionContext)
+
     const checkOpt = (opt, ans) => {
         setMarkAns(opt === ans)
-        
     }
+
+    useEffect(() => {
+        markAns ? 
+        setRightAns(rightAns+1)
+        :
+        ''
+    }, [markAns])
+
     return (
         <div onClick={() => checkOpt(option, answer)}
             className={markAns ?

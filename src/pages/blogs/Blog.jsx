@@ -20,7 +20,7 @@ const blogData = [
 
 const Blog = () => {
   return (
-    <div className='w-11/12 mx-auto'>
+    <div className='w-11/12 mx-auto pb-8'>
       <p className='text-2xl font-bold py-8 text-center'>Today's Blog Posts</p>
       <div className='flex flex-col gap-4'>
         {

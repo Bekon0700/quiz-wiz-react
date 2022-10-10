@@ -36,6 +36,7 @@ function App() {
         },
         {
           path: 'statistics',
+          loader: topicLoader,
           element: <Statistic />
         },
         {
