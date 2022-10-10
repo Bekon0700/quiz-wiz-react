@@ -5,7 +5,8 @@ import Home from './pages/home/Home'
 import Topic from './pages/topics/Topic'
 import Statistic from './pages/statistics/Statistic'
 import Blog from './pages/blogs/Blog'
-import { topicLoader } from './loaderMethods'
+import { topicLoader, topicQuesLoader } from './loaderMethods'
+import Question from './pages/questions/Question'
 
 function App() {
   const router = createBrowserRouter([
@@ -14,13 +15,22 @@ function App() {
       element: <Main />,
       children: [
         {
+          path: '/',
+          element: <Home />
+        },
+        {
           path: 'home',
           element: <Home />
         },
         {
           path: 'topics',
           loader: topicLoader,
-          element: <Topic />
+          element: <Topic />,
+        },
+        {
+          path: 'topic/:name/:id',
+          loader: ({params}) => topicQuesLoader(params),
+          element: <Question />,
         },
         {
           path: 'statistics',
