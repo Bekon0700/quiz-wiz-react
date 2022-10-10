@@ -3,7 +3,7 @@ import OptionCard from '../option-card/OptionCard';
 
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai'
 
-const QuestionCard = ({ ques }) => {
+const QuestionCard = ({ ques, setRightAns }) => {
     const [showAns, setShowAns] = useState(false)
     const { correctAnswer, options, question } = ques
     function createMarkup(data) {
@@ -15,7 +15,7 @@ const QuestionCard = ({ ques }) => {
 
     return (
         <div >
-            <div className='border-2 rounded-xl shadow-md p-4 lg:p-8 lg:w-1/2 mx-auto flex flex-col gap-8'>
+            <div className='border-2 rounded-xl shadow-md p-4 lg:p-8 lg:w-3/4 mx-auto flex flex-col gap-8'>
                 <div className='flex justify-between items-center'>
                     <div className='text-lg lg:text-xl font-semibold' dangerouslySetInnerHTML={createMarkup(question)}></div>
                     <div className='text-lg lg:text-2xl font-semibold text-red-400'>

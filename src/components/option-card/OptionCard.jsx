@@ -4,6 +4,7 @@ const OptionCard = ({ option, answer, question }) => {
     const [markAns, setMarkAns] = useState()
     const checkOpt = (opt, ans) => {
         setMarkAns(opt === ans)
+        
     }
     return (
         <div onClick={() => checkOpt(option, answer)}
