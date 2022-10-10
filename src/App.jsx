@@ -1,23 +1,41 @@
-import { useState } from 'react'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import Main from './components/layout/Main'
+
+import Home from './pages/home/Home'
+import Topic from './pages/topics/Topic'
+import Statistic from './pages/statistics/Statistic'
+import Blog from './pages/blogs/Blog'
+import { topicLoader } from './loaderMethods'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element: <Main />,
+      children: [
+        {
+          path: 'home',
+          element: <Home />
+        },
+        {
+          path: 'topics',
+          loader: topicLoader,
+          element: <Topic />
+        },
+        {
+          path: 'statistics',
+          element: <Statistic />
+        },
+        {
+          path: 'blogs',
+          element: <Blog />
+        },
+      ]
+    }
+  ])
 
   return (
-    <div className="App">
-      <h1 className='text-3xl'>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
+    <RouterProvider router={router} />
   )
 }
 
