@@ -1,24 +1,36 @@
-import React from 'react'
+import React, { useState } from 'react'
+import OptionCard from '../option-card/OptionCard';
+
+import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai'
 
 const QuestionCard = ({ ques }) => {
+    const [showAns, setShowAns] = useState(false)
     const { correctAnswer, options, question } = ques
     function createMarkup(data) {
         return { __html: `${data}` };
-      }
+    }
+    const showAnswer = () => {
+        setShowAns(!showAns)
+        window.alert(`${correctAnswer}`)
+    }
+
     return (
         <div >
             <div className='border-2 rounded-xl shadow-md p-4 lg:p-8 lg:w-1/2 mx-auto flex flex-col gap-8'>
-                <div className='text-xl font-semibold' dangerouslySetInnerHTML={createMarkup(question)}></div>
+                <div className='flex justify-between'>
+                    <div className='text-xl font-semibold' dangerouslySetInnerHTML={createMarkup(question)}></div>
+                    <div className='text-2xl font-semibold text-red-400'>
+                        {
+                            showAns ?
+                            <AiFillEye onClick={() => setShowAns(!showAns)}/>
+                            :
+                            <AiFillEyeInvisible onClick={() => showAnswer()} />
+                        }
+                    </div>
+                </div>
                 <div className='flex flex-col gap-2'>
                     {
-                        options.map(el => {
-                            return (
-                                <div key={el} className='border-2 px-8 text-gray-800 font-medium rounded-md flex gap-3 items-center'>
-                                    <input type="radio" id={el} name={question} value={el}/>
-                                    <label for={el} className='w-full py-4'>{el}</label>
-                                </div>
-                            )
-                        })
+                        options.map(el => <OptionCard key={el} option={el} answer={correctAnswer} question={question} />)
                     }
                 </div>
             </div>
