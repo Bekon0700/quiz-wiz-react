@@ -42,7 +42,7 @@ const NavBar = () => {
             <div className='lg:hidden'>
                 <div className={
                     navIcon ?
-                    'absolute top-0 left-0 w-3/4 bg-purple-50 border-r h-screen flex justify-center items-center text-center ease-in-out duration-1000'
+                    'absolute z-30 top-0 left-0 w-3/4 bg-purple-50 border-r h-screen flex justify-center items-center text-center ease-in-out duration-1000'
                     :
                     'absolute top-0 -left-full w-3/4 bg-purple-50 border-r h-screen flex justify-center items-center text-center ease-in-out duration-1000'
                 }>
